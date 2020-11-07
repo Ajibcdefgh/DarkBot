@@ -1,4 +1,4 @@
-name: KensurCheck
+name: DarkChecker
 
 on: [push, pull_request]
 
