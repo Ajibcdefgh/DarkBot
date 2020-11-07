@@ -16,7 +16,7 @@
 
 ## What is it?
 
-KensurBot is a modular Telegram userbot running on Python 3.8+ with an SQLAlchemy database.
+DarkBot is a modular Telegram userbot running on Python 3.8+ with an SQLAlchemy database.
 
 Based on [Paperplane](https://github.com/RaphielGang/Telegram-UserBot) and [ProjectBish](https://github.com/adekmaulana/ProjectBish) userbot.
 I made this fork to cherry-pick some modules I needed. Eventually I started messing with the code and here we are.
