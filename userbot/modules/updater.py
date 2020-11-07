@@ -41,10 +41,10 @@ async def gen_chlog(repo, diff):
 
 async def print_changelogs(event, ac_br, changelog):
     changelog_str = (
-        f"**Updates available in {ac_br} branch!\n\nChangelog:**\n`{changelog}`"
+        f"**Pembaruan tersedia di {ac_br} branch!\n\nChangelog:**\n`{changelog}`"
     )
     if len(changelog_str) > 4096:
-        await event.edit("**Changelog is too big, sending as a file.**")
+        await event.edit("**Changelog terlalu besar, dikirim sebagai file.**")
         file = open("output.txt", "w+")
         file.write(changelog_str)
         file.close()
@@ -114,7 +114,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             return await event.delete()
         else:
             await event.edit(
-                "**Successfully updated!**\nBot is restarting, will be back up in a few seconds."
+                "**Berhasil diperbarui!**\nBot sedang dimulai ulang, akan kembali dalam beberapa detik."
             )
     else:
         await event.edit("**Please set up** `HEROKU_API_KEY` **variable.**")
@@ -128,7 +128,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "**Successfully updated!**\nBot is restarting, will be back up in a few seconds."
+        "**Berhasil diperbarui!**\nBot sedang dimulai ulang, akan kembali dalam beberapa detik."
     )
     # Spin a new instance of bot
     args = [sys.executable, "-m", "userbot"]
@@ -139,7 +139,7 @@ async def update(event, repo, ups_rem, ac_br):
 @register(outgoing=True, pattern=r"^\.update( now| deploy|$)")
 async def upstream(event):
     "For .update command, check if the bot is up to date, update if specified"
-    await event.edit("**Checking for updates, please wait...**")
+    await event.edit("**Memeriksa pembaruan, harap tunggu...**")
     conf = event.pattern_match.group(1).strip()
     off_repo = UPSTREAM_REPO_URL
     force_update = False
@@ -189,14 +189,14 @@ async def upstream(event):
     """ - Special case for deploy - """
     if conf == "deploy":
         await event.edit(
-            "**Perfoming a full update...**\nThis usually takes less than 5 minutes, please wait."
+            "**Melakukan pembaruan penuh...**\nIni biasanya membutuhkan waktu kurang dari 5 menit, harap tunggu."
         )
         await deploy(event, repo, ups_rem, ac_br, txt)
         return
 
     if changelog == "" and not force_update:
         await event.edit(
-            f"**Your userbot is up-to-date with `{UPSTREAM_REPO_BRANCH}`!**"
+            f"**Userbot Anda sudah diperbarui dengan `{UPSTREAM_REPO_BRANCH}`!**"
         )
         return repo.__del__()
 
@@ -209,11 +209,11 @@ async def upstream(event):
 
     if force_update:
         await event.edit(
-            "**Force-syncing to latest stable userbot code, please wait...**"
+            "**Sinkronisasi paksa ke kode userbot stabil terbaru, harap tunggu...**"
         )
 
     if conf == "now":
-        await event.edit("**Perfoming a quick update, please wait...**")
+        await event.edit("**Melakukan pembaruan cepat, harap tunggu...**")
         await update(event, repo, ups_rem, ac_br)
     return
 
@@ -221,11 +221,11 @@ async def upstream(event):
 CMD_HELP.update(
     {
         "update": ">`.update`"
-        "\nUsage: Checks if the main userbot repository has any updates "
-        "and shows a changelog if so."
+        "\nUsage: Memeriksa apakah repositori userbot utama memiliki pembaruan "
+        "dan menunjukkan log perubahan jika demikian."
         "\n\n>`.update now`"
-        "\nUsage: Performs a quick update."
+        "\nUsage: Melakukan pembaruan cepat."
         "\n\n>`.update deploy`"
-        "\nUsage: Performs a full update (recommended)."
+        "\nUsage: Melakukan pembaruan lengkap (disarankan)."
     }
 )
