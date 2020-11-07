@@ -32,7 +32,7 @@ async def variable(var):
         return False
     if exe == "get":
         await var.edit("`Mendapatkan informasi ... `")
-        variabel = var.pattern_match.group(2)
+        var.pattern_match.group(2)
         if variable != "":
             if variable in heroku_var:
                 if BOTLOG:
@@ -92,16 +92,16 @@ async def set_var(var):
         if BOTLOG:
             await var.client.send_message(
                 BOTLOG_CHATID,
-                "#SETCONFIGVAR\n\n"
-                "**Ubah ConfigVar**:\n"
-                f"`{variable}` = `{value}`",
+                "#SETCONFIGVAR\n\n" "**Ubah ConfigVar**:\n" f"`{variable}` = `{value}`",
             )
         await var.edit("`Informasi di setel...`")
     else:
         if BOTLOG:
             await var.client.send_message(
                 BOTLOG_CHATID,
-                "#ADDCONFIGVAR\n\n" "**Menambahkan ConfigVar**:\n" f"`{variable}` = `{value}`",
+                "#ADDCONFIGVAR\n\n"
+                "**Menambahkan ConfigVar**:\n"
+                f"`{variable}` = `{value}`",
             )
         await var.edit("`Informasi ditambahkan...`")
     heroku_var[variable] = value

@@ -3,9 +3,6 @@
 import asyncio
 import os
 
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.types import MessageMediaPhoto
-
 from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, bot
 from userbot.events import register
 
