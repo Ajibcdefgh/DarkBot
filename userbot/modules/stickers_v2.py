@@ -12,14 +12,14 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("sir this is not a image message reply to image message")
+        await event.edit("Pak ini bukan gambar balas ke pesan gambar")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("sir, This is not a image ")
+        await event.edit("Pak, ini bukan gambar ")
         return
     chat = "@buildstickerbot"
-    await event.edit("Membuat Sticker..")
+    await event.edit("Membuat Sticker...")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -46,11 +46,11 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.edit("Balas di Sticker Goblok!!")
+        await event.edit("Balas di Sticker Ngab!!")
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:
-        await event.edit("Balas di Sticker Tolol!!")
+        await event.edit("Balas di Sticker Ngab!!")
         return
     chat = "@stickers_to_image_bot"
     await event.edit("Convert to image..")
@@ -64,7 +64,7 @@ async def _(event):
         except YouBlockedUserError:
             await event.reply("unblock me (@stickers_to_image_bot) to work")
             return
-        if response.text.startswith("I understand only stickers"):
+        if response.text.startswith("Saya hanya mengerti stiker"):
             await event.edit(
                 "Sorry i cant't convert it check wheter is non animated sticker or not"
             )
