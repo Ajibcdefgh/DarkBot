@@ -23,8 +23,8 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 DEF_UNAPPROVED_MSG = (
-    "Hey there! Unfortunately, I don't accept private messages from strangers.\n"
-    "Please contact me in a group, or wait for me to approve you."
+    "Hei yang disana! Sayangnya, saya tidak menerima pesan pribadi dari orang asing.\n"
+    "Silakan hubungi saya di grup, atau tunggu saya menyetujui Anda."
 )
 # =================================================================
 
@@ -83,8 +83,8 @@ async def permitpm(event):
 
             if COUNT_PM[event.chat_id] > 4:
                 await event.respond(
-                    "`You were spamming my Führer's PM, which I didn't like.`\n"
-                    "`You have been BLOCKED and reported as spam, until further notice.`"
+                    "`Anda melakukan spamming pada PM Mastor saya, yang tidak saya sukai.`\n"
+                    "`Anda telah DIBLOKIR dan dilaporkan sebagai spam, sampai pemberitahuan lebih lanjut.`"
                 )
 
                 try:
@@ -111,7 +111,7 @@ async def permitpm(event):
                         + "](tg://user?id="
                         + str(event.chat_id)
                         + ")"
-                        + " was just another retarded nibba",
+                        + " hanyalah orang tidak berguna ",
                     )
 
 
@@ -190,7 +190,7 @@ async def notifon(non_event):
     await non_event.edit("`Notifications from unapproved PM's unmuted!`")
 
 
-@register(outgoing=True, pattern=r"^\.approve$")
+@register(outgoing=True, pattern=r"^\.ok$")
 async def approvepm(apprvpm):
     """ For .approve command, give someone the permissions to PM you. """
     try:
@@ -237,7 +237,7 @@ async def approvepm(apprvpm):
         )
 
 
-@register(outgoing=True, pattern=r"^\.disapprove$")
+@register(outgoing=True, pattern=r"^\.nopm$")
 async def disapprovepm(disapprvpm):
     try:
         from userbot.modules.sql_helper.pm_permit_sql import dissprove
@@ -378,23 +378,23 @@ async def add_pmsg(cust_msg):
 
 CMD_HELP.update(
     {
-        "pmpermit": ">`.approve`"
-        "\nUsage: Approves the mentioned/replied person to PM."
-        "\n\n>`.disapprove`"
-        "\nUsage: Disapproves the mentioned/replied person to PM."
+        "pmpermit": ">`.ok`"
+        "\nUsage: Menyetujui orang yang disebutkan / menjawab PM."
+        "\n\n>`.nopm`"
+        "\nUsage: Menolak orang yang disebutkan / membalas PM."
         "\n\n>`.block`"
-        "\nUsage: Blocks the person."
+        "\nUsage: Blokir orang tersebut."
         "\n\n>`.unblock`"
-        "\nUsage: Unblocks the person so they can PM you."
+        "\nUsage: Batalkan pemblokiran orang tersebut agar mereka dapat PM Anda."
         "\n\n>`.notifoff`"
-        "\nUsage: Clears/Disables any notifications of unapproved PMs."
+        "\nUsage: Menghapus / Menonaktifkan pemberitahuan apa pun dari PM yang tidak disetujui."
         "\n\n>`.notifon`"
-        "\nUsage: Allows notifications for unapproved PMs."
-        "\n\n`.set pmpermit` <reply to msg>"
-        "\nUsage: Sets a custom PMPermit message."
+        "\nUsage: Izinkan pemberitahuan untuk PM yang tidak disetujui."
+        "\n\n`.set pmpermit` <balas pesan>"
+        "\nUsage: Setel pesan PMPermit kustom."
         "\n\n`.get pmpermit`"
-        "\nUsage: Shows your current PMPermit message."
+        "\nUsage: Menampilkan pesan PMPermit Anda saat ini."
         "\n\n`.reset pmpermit`"
-        "\nUsage: Resets PMPermit message to default."
+        "\nUsage: Mereset pesan PMPermit ke default."
     }
 )
