@@ -1,4 +1,4 @@
-# DarkBot
+# DarkBot Based On [KensurBot](https://github.com/kenHV/KensurBot)
 
 ![logo](https://telegra.ph/file/ae6bb0a12ff19f9ab01cc.jpg)
 
