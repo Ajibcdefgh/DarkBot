@@ -192,7 +192,7 @@ async def notifon(non_event):
 
 @register(outgoing=True, pattern=r"^\.ok$")
 async def approvepm(apprvpm):
-    """ For .approve command, give someone the permissions to PM you. """
+    """ For .ok command, give someone the permissions to PM you. """
     try:
         from userbot.modules.sql_helper.globals import gvarstatus
         from userbot.modules.sql_helper.pm_permit_sql import approve
@@ -226,9 +226,9 @@ async def approvepm(apprvpm):
     try:
         approve(uid)
     except IntegrityError:
-        return await apprvpm.edit("`User may already be approved.`")
+        return await apprvpm.edit("`Pengguna mungkin sudah disetujui.`")
 
-    await apprvpm.edit(f"[{name0}](tg://user?id={uid}) `approved to PM!`")
+    await apprvpm.edit(f"[{name0}](tg://user?id={uid}) `disetujui untuk PM!`")
 
     if BOTLOG:
         await apprvpm.client.send_message(
@@ -256,14 +256,14 @@ async def disapprovepm(disapprvpm):
         name0 = str(aname.first_name)
 
     await disapprvpm.edit(
-        f"[{name0}](tg://user?id={disapprvpm.chat_id}) `disapproved to PM!`"
+        f"[{name0}](tg://user?id={disapprvpm.chat_id}) `tidak disetujui untuk PM!`"
     )
 
     if BOTLOG:
         await disapprvpm.client.send_message(
             BOTLOG_CHATID,
             f"[{name0}](tg://user?id={disapprvpm.chat_id})"
-            " was disapproved to PM you.",
+            " tidak disetujui untuk PM Anda.",
         )
 
 
@@ -327,7 +327,7 @@ async def add_pmsg(cust_msg):
         await cust_msg.edit("`Running on Non-SQL mode!`")
         return
 
-    await cust_msg.edit("`Processing...`")
+    await cust_msg.edit("`Proses...`")
     conf = cust_msg.pattern_match.group(1)
 
     custom_message = sql.gvarstatus("unapproved_msg")
