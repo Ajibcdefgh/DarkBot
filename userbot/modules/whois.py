@@ -22,7 +22,7 @@ from userbot.events import register
 async def who(event):
 
     await event.edit(
-        "`Sit tight while I steal some data from *Global Network Zone*...`"
+        "`Tunggu sebentar sedang mencari data pengguna ini...`"
     )
 
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -134,19 +134,19 @@ async def fetch_info(replied_user, event):
     username = "@{}".format(username) if username else ("This User has no Username")
     user_bio = "This User has no About" if not user_bio else user_bio
 
-    caption = "<b>USER INFO:</b>\n\n"
-    caption += f"First Name: {first_name}\n"
-    caption += f"Last Name: {last_name}\n"
-    caption += f"Username: {username}\n"
-    caption += f"Data Centre ID: {dc_id}\n"
-    caption += f"Number of Profile Pics: {replied_user_profile_photos_count}\n"
-    caption += f"Is Bot: {is_bot}\n"
-    caption += f"Is Restricted: {restricted}\n"
-    caption += f"Is Verified by Telegram: {verified}\n"
+    caption = "<b>Berikut yang saya dapat:</b>\n\n"
+    caption += f"Nama depan: {first_name}\n"
+    caption += f"Nama Belakang: {last_name}\n"
+    caption += f"Nama pengguna: {username}\n"
+    caption += f"ID Pusat Data: {dc_id}\n"
+    caption += f"Jumlah Foto Profil: {replied_user_profile_photos_count}\n"
+    caption += f"Apakah Bot?: {is_bot}\n"
+    caption += f"Apakah Dibatasi?: {restricted}\n"
+    caption += f"Diverifikasi oleh Telegram?: {verified}\n"
     caption += f"ID: <code>{user_id}</code>\n\n"
     caption += f"Bio: \n<code>{user_bio}</code>\n\n"
-    caption += f"Common Chats with this user: {common_chat}\n"
-    caption += f"Permanent Link To Profile: "
+    caption += f"Obrolan Umum dengan pengguna ini: {common_chat}\n"
+    caption += f"Tautan Permanen Ke Profil: "
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a>'
 
     return photo, caption
@@ -154,7 +154,7 @@ async def fetch_info(replied_user, event):
 
 CMD_HELP.update(
     {
-        "whois": ">`.whois <username> or reply to someones text with .whois`"
-        "\nUsage: Gets info of an user."
+        "whois": ">`.whois <nama pengguna> atau balas teks seseorang dengan .whois`"
+        "\nUsage: Mendapat info pengguna."
     }
 )
