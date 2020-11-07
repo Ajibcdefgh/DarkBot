@@ -24,14 +24,14 @@ async def help(event):
             await event.edit("Please specify a valid module name.")
     else:
         temp = ""
-        final = "**List of all loaded module(s)**\n\
-                 \nSpecify which module do you want help for! \
-                 \n**Usage:** `.help` <module name>\n\n"
+        final = "**Daftar semua modul yang dimuat**\n\
+                 \nTentukan modul mana yang Anda ingin bantuannya! \
+                 \n**Usage:** `.help` <nama modul>\n\n"
 
         for i in CMD_HELP:
             temp += str(i) + " "
         temp = sorted(temp.split())
         for i in temp:
             final += "`" + str(i)
-            final += "`\t\t\t•\t\t\t "
+            final += "`\t\t\t][\t\t\t "
         await event.edit(f"{final[:-5]}")
