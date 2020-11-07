@@ -10,7 +10,8 @@ from random import choice, randint
 
 from telethon.events import StopPropagation
 
-from userbot import AFKREASON, BOTLOG, BOTLOG_CHATID, CMD_HELP, PM_AUTO_BAN
+from userbot import (AFKREASON, BOTLOG, BOTLOG_CHATID, CMD_HELP, COUNT_MSG,
+                     ISAFK, PM_AUTO_BAN, USERS)
 from userbot.events import register
 
 # ========================= CONSTANTS ============================
@@ -50,7 +51,7 @@ async def mention_afk(mention):
     global ISAFK
     if mention.message.mentioned and ISAFK:
         is_bot = False
-        if (sender := await mention.get_sender()) :
+        if (sender := await mention.get_sender()):
             is_bot = sender.bot
         if not is_bot and mention.sender_id not in USERS:
             if AFKREASON:
