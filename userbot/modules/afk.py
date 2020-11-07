@@ -31,7 +31,7 @@ AFKSTR = [
     "Aku pergi ke sini\n <----",
     "Silakan tinggalkan pesan dan buat saya merasa lebih penting daripada sebelumnya.",
     "Saya tidak di sini jadi berhentilah menulis kepada saya,\nAnda juga tidak akan menemukan diri Anda dengan layar yang penuh dengan pesan Anda sendiri.",
-    "Jika aku ada di sini,\nAku akan memberitahumu di mana aku berada.\N\nTapi aku tidak,\njadi tanya aku kapan aku kembali ...",
+    "Jika aku ada di sini,\nAku akan memberitahumu di mana aku berada.\n\nTapi aku tidak,\njadi tanya aku kapan aku kembali ...",
     "Aku pergi!\nAku tidak tahu kapan aku akan kembali!\nSemoga beberapa menit dari sekarang!",
     "Aku sedang tidak ada saat ini jadi tolong tinggalkan nama, nomor, dan alamatmu dan aku akan menguntitmu nanti.",
     "Maaf, saya tidak di sini sekarang.\nJangan ragu untuk berbicara dengan userbot saya selama Anda suka.\nSaya akan menghubungi Anda lagi nanti.",
