@@ -131,15 +131,15 @@ async def pipcheck(pip):
         await pip.edit("`Use .help pip to see an example`")
 
 
-@register(outgoing=True, pattern=r"^\.alive$")
+@register(outgoing=True, pattern=r"^\.alive|.on$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     await alive.edit(
         "`"
         "DarkBot sudah aktif dan berjalan!\n\n"
-        f"Bot    : v0.9\n"
-        f"Python : {python_version()}\n"
-        f"User   : {DEFAULTUSER}"
+        f"🤖Bot    : v0.9\n"
+        f"🐍Python : {python_version()}\n"
+        f"👤User   : {DEFAULTUSER}"
         "`"
     )
 
@@ -167,14 +167,14 @@ async def amireallyalivereset(ureset):
 
 CMD_HELP.update(
     {
-        "sysd": ">`.sysd`" "\nUsage: Shows system information using neofetch.",
-        "botver": ">`.botver`" "\nUsage: Shows the userbot version.",
-        "pip": ">`.pip <module(s)>`" "\nUsage: Does a search of pip modules(s).",
-        "alive": ">`.alive`"
-        "\nUsage: Type .alive to see wether your bot is working or not."
-        "\n\n>`.aliveu <text>`"
-        "\nUsage: Changes the 'user' in alive to the text you want."
+        "sysd": ">`.sysd`" "\nUsage: Menampilkan informasi sistem menggunakan neofetch.",
+        "botver": ">`.botver`" "\nUsage: Menampilkan versi userbot.",
+        "pip": ">`.pip <module(s)>`" "\nUsage: Melakukan pencarian modul pip.",
+        "alive": ">`.alive/.on`"
+        "\nUsage: Ketik .alive/.on untuk melihat apakah bot Anda berfungsi atau tidak."
+        "\n\n>`.aliveu <teks>`"
+        "\nUsage: Mengubah 'pengguna' hidup ke teks yang Anda inginkan."
         "\n\n>`.resetalive`"
-        "\nUsage: Resets the user to default.",
+        "\nUsage: Menyetel ulang pengguna ke default.",
     }
 )
