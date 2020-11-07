@@ -15,8 +15,13 @@ from os import environ, execle, path, remove
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from userbot import (CMD_HELP, HEROKU_API_KEY, HEROKU_APP_NAME,
-                     UPSTREAM_REPO_BRANCH, UPSTREAM_REPO_URL)
+from userbot import (
+    CMD_HELP,
+    HEROKU_API_KEY,
+    HEROKU_APP_NAME,
+    UPSTREAM_REPO_BRANCH,
+    UPSTREAM_REPO_URL,
+)
 from userbot.events import register
 
 requirements_path = path.join(
@@ -72,8 +77,10 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         heroku_app = None
         heroku_applications = heroku.apps()
         if HEROKU_APP_NAME is None:
-            await event.edit("**Please set up the** `HEROKU_APP_NAME` **variable"
-                             " to be able to deploy your userbot.**")
+            await event.edit(
+                "**Please set up the** `HEROKU_APP_NAME` **variable"
+                " to be able to deploy your userbot.**"
+            )
             repo.__del__()
             return
         for app in heroku_applications:
@@ -81,7 +88,9 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
                 heroku_app = app
                 break
         if heroku_app is None:
-            await event.edit(f"{txt}\n" "**Invalid Heroku credentials for deploying userbot dyno.**")
+            await event.edit(
+                f"{txt}\n" "**Invalid Heroku credentials for deploying userbot dyno.**"
+            )
             return repo.__del__()
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -104,7 +113,9 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             await asyncio.sleep(5)
             return await event.delete()
         else:
-            await event.edit("**Successfully updated!**\nBot is restarting, will be back up in a few seconds.")
+            await event.edit(
+                "**Successfully updated!**\nBot is restarting, will be back up in a few seconds."
+            )
     else:
         await event.edit("**Please set up** `HEROKU_API_KEY` **variable.**")
     return
@@ -116,7 +127,9 @@ async def update(event, repo, ups_rem, ac_br):
     except GitCommandError:
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
-    await event.edit("**Successfully updated!**\nBot is restarting, will be back up in a few seconds.")
+    await event.edit(
+        "**Successfully updated!**\nBot is restarting, will be back up in a few seconds."
+    )
     # Spin a new instance of bot
     args = [sys.executable, "-m", "userbot"]
     execle(sys.executable, *args, environ)
@@ -175,18 +188,24 @@ async def upstream(event):
 
     """ - Special case for deploy - """
     if conf == "deploy":
-        await event.edit("**Perfoming a full update...**\nThis usually takes less than 5 minutes, please wait.")
+        await event.edit(
+            "**Perfoming a full update...**\nThis usually takes less than 5 minutes, please wait."
+        )
         await deploy(event, repo, ups_rem, ac_br, txt)
         return
 
     if changelog == "" and not force_update:
-        await event.edit(f"**Your userbot is up-to-date with `{UPSTREAM_REPO_BRANCH}`!**")
+        await event.edit(
+            f"**Your userbot is up-to-date with `{UPSTREAM_REPO_BRANCH}`!**"
+        )
         return repo.__del__()
 
     if conf == "" and force_update is False:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond("**Do** `.update now` **or** `.update deploy` **to update.**")
+        return await event.respond(
+            "**Do** `.update now` **or** `.update deploy` **to update.**"
+        )
 
     if force_update:
         await event.edit(

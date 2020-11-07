@@ -66,7 +66,8 @@ async def mim(event):
                         to_download_directory, file_name
                     )
                     downloaded_file_name = await bot.download_media(
-                        reply_message, downloaded_file_name,
+                        reply_message,
+                        downloaded_file_name,
                     )
                     if os.path.exists(downloaded_file_name):
                         await bot.send_file(
@@ -83,10 +84,10 @@ async def mim(event):
                 response = await bot_conv.get_response()
                 the_download_directory = TEMP_DOWNLOAD_DIRECTORY
                 files_name = "memes.webp"
-                download_file_name = os.path.join(
-                    the_download_directory, files_name)
+                download_file_name = os.path.join(the_download_directory, files_name)
                 await bot.download_media(
-                    response.media, download_file_name,
+                    response.media,
+                    download_file_name,
                 )
                 requires_file_name = TEMP_DOWNLOAD_DIRECTORY + "memes.webp"
                 await bot.send_file(  # pylint:disable=E0602

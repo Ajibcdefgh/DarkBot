@@ -41,13 +41,12 @@ async def get_tz(con):
         return
 
 
-@register(outgoing=True,
-          pattern=r"^\.time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
+@register(outgoing=True, pattern=r"^\.time(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
 async def time_func(tdata):
-    """ For .time command, return the time of
-        1. The country passed as an argument,
-        2. The default userbot country(set it by using .settime),
-        3. The server where the userbot runs.
+    """For .time command, return the time of
+    1. The country passed as an argument,
+    2. The default userbot country(set it by using .settime),
+    3. The server where the userbot runs.
     """
     con = tdata.pattern_match.group(1).title()
     tz_num = tdata.pattern_match.group(2)
@@ -101,13 +100,12 @@ async def time_func(tdata):
         )
 
 
-@register(outgoing=True,
-          pattern=r"^\.date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
+@register(outgoing=True, pattern=r"^\.date(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?")
 async def date_func(dat):
-    """ For .date command, return the date of
-        1. The country passed as an argument,
-        2. The default userbot country(set it by using .settime),
-        3. The server where the userbot runs.
+    """For .date command, return the date of
+    1. The country passed as an argument,
+    2. The default userbot country(set it by using .settime),
+    3. The server where the userbot runs.
     """
     con = dat.pattern_match.group(1).title()
     tz_num = dat.pattern_match.group(2)

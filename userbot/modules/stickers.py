@@ -13,9 +13,12 @@ from os import remove
 
 from PIL import Image
 from telethon.tl.functions.messages import GetStickerSetRequest
-from telethon.tl.types import (DocumentAttributeFilename,
-                               DocumentAttributeSticker, InputStickerSetID,
-                               MessageMediaPhoto)
+from telethon.tl.types import (
+    DocumentAttributeFilename,
+    DocumentAttributeSticker,
+    InputStickerSetID,
+    MessageMediaPhoto,
+)
 
 from userbot import CMD_HELP, bot
 from userbot.events import register
@@ -358,4 +361,6 @@ CMD_HELP.update(
         "\n\n>`.stkrinfo`"
         "\nUsage: Gets info about the sticker pack."
         "\n\n>`.getsticker`"
-        "\nUsage: reply to a sticker to get 'PNG' file of sticker."})
+        "\nUsage: reply to a sticker to get 'PNG' file of sticker."
+    }
+)

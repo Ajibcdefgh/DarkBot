@@ -63,7 +63,9 @@ async def get_user(event):
     """ Get the user from argument or replied message. """
     if event.reply_to_msg_id and not event.pattern_match.group(1):
         previous_message = await event.get_reply_message()
-        replied_user = await event.client(GetFullUserRequest(previous_message.sender_id))
+        replied_user = await event.client(
+            GetFullUserRequest(previous_message.sender_id)
+        )
     else:
         user = event.pattern_match.group(1)
 
@@ -77,9 +79,7 @@ async def get_user(event):
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
 
-            if isinstance(
-                    probable_user_mention_entity,
-                    MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 replied_user = await event.client(GetFullUserRequest(user_id))
                 return replied_user
@@ -128,8 +128,9 @@ async def fetch_info(replied_user, event):
         if first_name
         else ("This User has no First Name")
     )
-    last_name = (last_name.replace("\u2060", "")
-                 if last_name else ("This User has no Last Name"))
+    last_name = (
+        last_name.replace("\u2060", "") if last_name else ("This User has no Last Name")
+    )
     username = "@{}".format(username) if username else ("This User has no Username")
     user_bio = "This User has no About" if not user_bio else user_bio
 
