@@ -1,9 +1,9 @@
 {
-  "name": "KensurBot",
-  "description": "[KensurBot] A modular Telegram userbot running on Python 3.8+ with an sqlalchemy database.",
-  "logo": "#",
+  "name": "DarkBot",
+  "description": "[DarkBot] A modular Telegram userbot running on Python 3.8+ with an sqlalchemy database.",
+  "logo": "https://telegra.ph/file/a4cbdc4ef73f8d6cd6c77.jpg",
   "keywords": ["telegram", "userbot", "plugin", "modular", "productivity"],
-  "repository": "https://github.com/KenHV/KensurBot",
+  "repository": "https://github.com/Ajibcdefgh/DarkBot",
   "website": "https://telegra.ph/How-to-host-a-Telegram-Userbot-11-02",
   "success_url": "https://t.me/KenVerseChat",
   "stack": "container",
