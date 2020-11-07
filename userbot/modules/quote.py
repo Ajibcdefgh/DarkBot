@@ -19,7 +19,7 @@ async def _(event):
     if not reply_message.text:
         return await event.edit("`Reply to a text message.`")
     chat = "@QuotLyBot"
-    await event.edit("`Processing...`")
+    await event.edit("`Membuat stiker...`")
 
     try:
         async with bot.conversation(chat) as conv:
@@ -49,6 +49,6 @@ async def _(event):
 CMD_HELP.update(
     {
         "quote": ">`.q`"
-        "\nUsage: Reply to a text message to convert to sticker using Quotly bot."
+        "\nUsage: Balas pesan teks untuk diubah menjadi stiker menggunakan Quotly bot."
     }
 )
