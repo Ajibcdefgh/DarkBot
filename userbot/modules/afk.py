@@ -15,29 +15,29 @@ from userbot.events import register
 
 # ========================= CONSTANTS ============================
 AFKSTR = [
-    "I'm busy right now. Please talk in a bag and when I come back you can just give me the bag!",
-    "I'm away right now. If you need anything, leave a message after the beep:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
-    "You missed me, next time aim better.",
-    "I'll be back in a few minutes and if I'm not...,\nwait longer.",
-    "I'm not here right now, so I'm probably somewhere else.",
-    "Roses are red,\nViolets are blue,\nLeave me a message,\nAnd I'll get back to you.",
-    "Sometimes the best things in life are worth waiting for…\nI'll be right back.",
-    "I'll be right back,\nbut if I'm not right back,\nI'll be back later.",
-    "If you haven't figured it out already,\nI'm not here.",
-    "Hello, welcome to my away message, how may I ignore you today?",
-    "I'm away over 7 seas and 7 countries,\n7 waters and 7 continents,\n7 mountains and 7 hills,\n7 plains and 7 mounds,\n7 pools and 7 lakes,\n7 springs and 7 meadows,\n7 cities and 7 neighborhoods,\n7 blocks and 7 houses...\n\nWhere not even your messages can reach me!",
-    "I'm away from the keyboard at the moment, but if you'll scream loud enough at your screen, I might just hear you.",
-    "I went that way\n---->",
-    "I went this way\n<----",
-    "Please leave a message and make me feel even more important than I already am.",
-    "I am not here so stop writing to me,\nor else you will find yourself with a screen full of your own messages.",
-    "If I were here,\nI'd tell you where I am.\n\nBut I'm not,\nso ask me when I return...",
-    "I am away!\nI don't know when I'll be back!\nHopefully a few minutes from now!",
-    "I'm not available right now so please leave your name, number, and address and I will stalk you later.",
-    "Sorry, I'm not here right now.\nFeel free to talk to my userbot as long as you like.\nI'll get back to you later.",
-    "I bet you were expecting an away message!",
-    "Life is so short, there are so many things to do...\nI'm away doing one of them..",
-    "I am not here right now...\nbut if I was...\n\nwouldn't that be awesome?",
+    "Aku sedang sibuk sekarang. Tolong bicara di dalam tas dan ketika aku kembali kamu bisa memberikanku tas itu!",
+    "Aku sedang pergi sekarang. Jika kamu butuh sesuatu, tinggalkan pesan setelah bunyi bip:\n`beeeeeeeeeeeeeeeeeeeeeeeeeeeeeeep`!",
+    "Kamu merindukanku, lain kali bidik lebih baik.",
+    "Aku akan kembali dalam beberapa menit dan jika tidak ...,\nmenunggu lebih lama.",
+    "Saya tidak di sini sekarang, jadi saya mungkin di tempat lain.",
+    "Mawar itu merah,\nViolet itu biru,\nTinggalkan aku pesan,\nDan aku akan menghubungi kamu kembali.",
+    "Terkadang hal terbaik dalam hidup layak untuk ditunggu…\nAku akan segera kembali.",
+    "Aku akan segera kembali,\ntapi jika aku tidak segera kembali,\nAku akan kembali nanti.",
+    "Jika kamu belum mengetahuinya,\nAku tidak di sini.",
+    "Halo, selamat datang di pesan tandang saya, bagaimana saya bisa mengabaikan Anda hari ini?",
+    "Saya berada di 7 lautan dan 7 negara,\n7 perairan dan 7 benua,\n7 gunung dan 7 bukit,\n7 dataran dan 7 gundukan,\n7 kolam dan 7 danau,\n7 mata air dan 7 padang rumput,\n7 kota dan 7 lingkungan,\n7 blok dan 7 rumah ... \n\nDi mana bahkan pesan Anda tidak bisa sampai ke saya! ",
+    "Saya sedang tidak menggunakan keyboard saat ini, tetapi jika Anda akan berteriak cukup keras di layar, saya mungkin akan mendengar Anda.",
+    "Saya pergi ke sana\n ---->",
+    "Aku pergi ke sini\n <----",
+    "Silakan tinggalkan pesan dan buat saya merasa lebih penting daripada sebelumnya.",
+    "Saya tidak di sini jadi berhentilah menulis kepada saya,\nAnda juga tidak akan menemukan diri Anda dengan layar yang penuh dengan pesan Anda sendiri.",
+    "Jika aku ada di sini,\nAku akan memberitahumu di mana aku berada.\N\nTapi aku tidak,\njadi tanya aku kapan aku kembali ...",
+    "Aku pergi!\nAku tidak tahu kapan aku akan kembali!\nSemoga beberapa menit dari sekarang!",
+    "Aku sedang tidak ada saat ini jadi tolong tinggalkan nama, nomor, dan alamatmu dan aku akan menguntitmu nanti.",
+    "Maaf, saya tidak di sini sekarang.\nJangan ragu untuk berbicara dengan userbot saya selama Anda suka.\nSaya akan menghubungi Anda lagi nanti.",
+    "Saya yakin Anda mengharapkan pesan tandang!",
+    "Hidup ini sangat singkat, begitu banyak hal yang harus dilakukan ...\nSaya akan melakukan salah satunya ..",
+    "Aku tidak di sini sekarang ...\ntapi jika aku ...\n\nbukankah itu keren?",
 ]
 # =================================================================
 
@@ -96,8 +96,8 @@ async def afk_on_pm(sender):
             if sender.sender_id not in USERS:
                 if AFKREASON:
                     await sender.reply(
-                        f"I'm AFK right now.\
-                    \nReason: `{AFKREASON}`"
+                        f"Saya AFK sekarang.\
+                    \nKarena: `{AFKREASON}`"
                     )
                 else:
                     await sender.reply(str(choice(AFKSTR)))
@@ -106,8 +106,8 @@ async def afk_on_pm(sender):
                 if USERS[sender.sender_id] % randint(2, 4) == 0:
                     if AFKREASON:
                         await sender.reply(
-                            f"I'm still AFK.\
-                        \nReason: `{AFKREASON}`"
+                            f"Saya masih AFK.\
+                        \nKarena: `{AFKREASON}`"
                         )
                     else:
                         await sender.reply(str(choice(AFKSTR)))
@@ -124,9 +124,9 @@ async def set_afk(afk_e):
     global AFKREASON
     if string:
         AFKREASON = string
-        await afk_e.edit("Going AFK!" f"\nReason: `{string}`")
+        await afk_e.edit("Pergi AFK!" f"\nKarena: `{string}`")
     else:
-        await afk_e.edit("Going AFK!")
+        await afk_e.edit("Pergi AFK!")
     if BOTLOG:
         await afk_e.client.send_message(BOTLOG_CHATID, "#AFK\nYou went AFK!")
     ISAFK = True
@@ -148,11 +148,11 @@ async def type_afk_is_not_true(notafk):
         if BOTLOG:
             await notafk.client.send_message(
                 BOTLOG_CHATID,
-                "You've recieved "
+                "Anda telah menerima "
                 + str(COUNT_MSG)
-                + " messages from "
+                + " pesan dari "
                 + str(len(USERS))
-                + " chats while you were away",
+                + " obrolan saat Anda pergi",
             )
             for i in USERS:
                 name = await notafk.client.get_entity(i)
@@ -176,9 +176,9 @@ async def type_afk_is_not_true(notafk):
 
 CMD_HELP.update(
     {
-        "afk": ">`.afk [Optional Reason]`"
-        "\nUsage: Sets you as afk.\nReplies to anyone who tags/PM's "
-        "you telling them that you are AFK(reason)."
-        "\n\nSwitches off AFK when you type back anything, anywhere."
+        "afk": ">`.afk [Alasan]`"
+        "\nUsage: Menetapkan Anda sebagai afk. \ NBalas kepada siapa saja yang memberi tag / PM "
+        "Anda memberi tahu mereka bahwa Anda AFK(alasan)."
+        "\n\nMematikan AFK saat Anda mengetik kembali apa pun, di mana pun."
     }
 )
