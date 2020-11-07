@@ -10,8 +10,7 @@ from random import choice, randint
 
 from telethon.events import StopPropagation
 
-from userbot import (AFKREASON, BOTLOG, BOTLOG_CHATID, CMD_HELP, COUNT_MSG,
-                     ISAFK, PM_AUTO_BAN, USERS)
+from userbot import AFKREASON, BOTLOG, BOTLOG_CHATID, CMD_HELP, PM_AUTO_BAN
 from userbot.events import register
 
 # ========================= CONSTANTS ============================
