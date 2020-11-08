@@ -1696,7 +1696,7 @@ async def emoji_kontl(e):
     await e.edit(kontl)
 
 
-@register(outgoing=True, pattern=r"^\.ok$")
+@register(outgoing=True, pattern=r"^\.oke$")
 async def emoji_oke(e):
     emoji = e.pattern_match.group(1)
     oke = GAMBAR_OK
@@ -1783,6 +1783,6 @@ CMD_HELP.update({
     "`\n>.nou ; .bot ; .gey ; .tf ; .paw ; .taco ; .nih ;`"
     "`\n>.fag ; .gtfo ; .stfu ; .lol ; .lool ; .fail ; .leave`"
     "`\n>.iwi ; .sayhi ; .koc ; .gas ; .earth ; .love ; .rain`"
-    "`\n>.penis ; .emo ; .fuck ; .ok ; .skull`"
+    "`\n>.penis ; .emo ; .fuck ; .oke ; .skull`"
     "\n\n\nThanks to 🅱️ottom🅱️ext🅱️ot (@NotAMemeBot) for some of these."
 })
