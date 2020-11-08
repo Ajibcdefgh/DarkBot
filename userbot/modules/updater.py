@@ -204,7 +204,7 @@ async def upstream(event):
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
         return await event.respond(
-            "**Do** `.update now` **or** `.update deploy` **to update.**"
+            "**Ketik** `.update now` **atau** `.update deploy` **untuk memperbaharui.**"
         )
 
     if force_update:
