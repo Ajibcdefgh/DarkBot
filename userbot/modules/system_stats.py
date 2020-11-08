@@ -11,14 +11,15 @@ from os import remove
 from platform import python_version, uname
 from shutil import which
 
+from userbot import ALIVE_NAME, CMD_HELP, ALIVE_LOGO
+
+
 from userbot import (
     CMD_HELP,
     ALIVE_NAME,
     ALIVE_LOGO,
 
-from telethon import version
 
-from userbot import ALIVE_NAME, CMD_HELP, ALIVE_LOGO
 from userbot.events import register
 
 # ================= CONSTANT =================
