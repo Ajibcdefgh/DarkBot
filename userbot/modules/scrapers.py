@@ -57,7 +57,6 @@ async def setlang(prog):
 
 @register(outgoing=True, pattern=r"^\.carbon")
 async def carbon_api(e):
-    """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing...`")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
     global CARBONLANG
@@ -75,17 +74,7 @@ async def carbon_api(e):
     url = CARBON.format(code=code, lang=CARBONLANG)
     driver = await chrome()
     driver.get(url)
-    await e.edit("`Processing..\n50%`")
-    download_path = "./"
-    driver.command_executor._commands["send_command"] = (
-        "POST",
-        "/session/$sessionId/chromium/send_command",
-    )
-    params = {
-        "cmd": "Page.setDownloadBehavior",
-        "params": {"behavior": "allow", "downloadPath": download_path},
-    }
-    driver.execute("send_command", params)
+    await e.edit("`Processing...\n50%`")
     driver.find_element_by_xpath("//button[@id='export-menu']").click()
     driver.find_element_by_xpath("//button[contains(text(),'4x')]").click()
     driver.find_element_by_xpath("//button[contains(text(),'PNG')]").click()
@@ -99,8 +88,8 @@ async def carbon_api(e):
         e.chat_id,
         file_path,
         caption=(
-            "Made using [Carbon](https://carbon.now.sh/about/),"
-            "\na project by [Dawn Labs](https://dawnlabs.io/)"
+            "Dibuat menggunakan [Carbon](https://carbon.now.sh/about/),"
+            "\nsebuah proyek oleh [Dawn Labs](https://dawnlabs.io/)"
         ),
         force_document=True,
         reply_to=e.message.reply_to_msg_id,
@@ -203,7 +192,7 @@ async def gsearch(event):
     if not match:
         return await event.edit("`Reply to a message or pass a query to search!`")
 
-    await event.edit("`Processing...`")
+    await event.edit("`Mencari...`")
 
     if event.pattern_match.group(1) != "":
         counter = int(event.pattern_match.group(1))
@@ -235,13 +224,13 @@ async def gsearch(event):
             break
 
     await event.edit(
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
+        "**Kueri Pencarian:**\n`" + match + "`\n\n**Hasil:**\n" + msg, link_preview=False
     )
 
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            "Google Search query` " + match + " `was executed successfully",
+            "Kueri Google Penelusuran` " + match + " `berhasil dieksekusi",
         )
 
 
@@ -258,7 +247,7 @@ async def wiki(wiki_q):
     if not match:
         return await wiki_q.edit("`Reply to a message or pass a query to search!`")
 
-    await wiki_q.edit("`Processing...`")
+    await wiki_q.edit("`Proses mencari...`")
 
     try:
         summary(match)
@@ -279,10 +268,10 @@ async def wiki(wiki_q):
         )
         if os.path.exists("output.txt"):
             return os.remove("output.txt")
-    await wiki_q.edit("**Search:**\n`" + match + "`\n\n**Result:**\n" + result)
+    await wiki_q.edit("**pencarian:**\n`" + match + "`\n\n**Hasil:**\n" + result)
     if BOTLOG:
         await wiki_q.client.send_message(
-            BOTLOG_CHATID, f"Wiki query `{match}` was executed successfully"
+            BOTLOG_CHATID, f"Kueri wiki `{match}` berhasil dieksekusi"
         )
 
 
@@ -710,31 +699,31 @@ def deEmojify(inputString):
 
 CMD_HELP.update(
     {
-        "img": ">`.img [count] <query> [or reply]`"
-        "\nUsage: Does an image search on Google."
-        "\nCan specify the number of results needed (default is 3).",
-        "currency": ">`.currency <amount> <from> <to>`"
-        "\nUsage: Converts various currencies for you.",
-        "carbon": ">`.carbon <text> [or reply]`"
-        "\nUsage: Beautify your code using carbon.now.sh\n"
-        "Use .crblang <text> to set language for your code.",
-        "google": ">`.google [count] <query> [or reply]`"
-        "\nUsage: Does a search on Google."
-        "\nCan specify the number of results needed (default is 3).",
-        "wiki": ">`.wiki <query> [or reply]`" "\nUsage: Does a search on Wikipedia.",
-        "ud": ">`.ud <query> [or reply]`" "\nUsage: Does a search on Urban Dictionary.",
-        "tts": ">`.tts <text> [or reply]`"
-        "\nUsage: Translates text to speech for the language which is set."
-        "\nUse >`.lang tts <language code>` to set language for tts. (Default is English.)",
-        "trt": ">`.trt <text> [or reply]`"
-        "\nUsage: Translates text to the language which is set."
-        "\nUse >`.lang trt <language code>` to set language for trt. (Default is English)",
-        "yt": ">`.yt [count] <query> [or reply]`"
-        "\nUsage: Does a YouTube search."
-        "\nCan specify the number of results needed (default is 3).",
-        "imdb": ">`.imdb <movie-name>`" "\nUsage: Shows movie info and other stuff.",
-        "rip": ">`.ra <url> [or reply] or .rv <url> [or reply]`"
-        "\nUsage: Download videos and songs from YouTube "
-        "(and [many other sites](https://ytdl-org.github.io/youtube-dl/supportedsites.html)).",
+        "img": ">`.img [count] <pertanyaan> [atau balas]`"
+        "\nUsage: Melakukan pencarian gambar di Google."
+        "\nDapat menentukan jumlah hasil yang dibutuhkan (default adalah 3).",
+        "currency": ">`.currency <jumlah> <dari> <ke>`"
+        "\nUsage: Mengonversi berbagai mata uang untuk Anda.",
+        "carbon": ">`.carbon <teks> [atau balas]`"
+        "\nUsage: Mempercantik kode Anda menggunakan carbon.now.sh\n"
+        "Use .crblang <teks> untuk mengatur bahasa untuk kode Anda.",
+        "google": ">`.google [count] <pertanyaan> [atau balas]`"
+        "\nUsage: Melakukan pencarian di Google."
+        "\nDapat menentukan jumlah hasil yang dibutuhkan (default adalah 3).",
+        "wiki": ">`.wiki <pertanyaan> [atau balas]`" "\nUsage: Melakukan pencarian di Wikipedia.",
+        "ud": ">`.ud <pertanyaan> [atau balas]`" "\nUsage: Melakukan pencarian di Urban Dictionary.",
+        "tts": ">`.tts <text> [atau balas]`"
+        "\nUsage: Menerjemahkan teks ke ucapan untuk bahasa yang diatur."
+        "\nUse >`.lang tts <kode bahasa>` untuk mengatur bahasa untuk tts. (Default-nya adalah bahasa Inggris.)",
+        "trt": ">`.trt <text> [atau balas]`"
+        "\nUsage: Menerjemahkan teks ke bahasa yang diatur."
+        "\nUse >`.lang trt <kode bahasa>` to set language for trt. (Default is English)",
+        "yt": ">`.yt [count] <pertanyaan> [atau balas]`"
+        "\nUsage: Melakukan pencarian YouTube."
+        "\nDapat menentukan jumlah hasil yang dibutuhkan (default adalah 3).",
+        "imdb": ">`.imdb <nama film>`" "\nUsage: Menampilkan info film dan hal lainnya.",
+        "rip": ">`.ra <link> [atau balas] atau .rv <link> [atau balas]`"
+        "\nUsage: Unduh video dan lagu dari YouTube "
+        "(Dan [banyak situs lainnya](https://ytdl-org.github.io/youtube-dl/supportedsites.html)).",
     }
 )
