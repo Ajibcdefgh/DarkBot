@@ -12,6 +12,10 @@
       "description": "Set your name which will be displayed on .alive messages, etc.",
       "required": true
     },
+    "ALIVE_LOGO": {
+      "description": "Set your pic which will be displayed on .alive image.",
+      "required": true
+    },
     "API_KEY": {
       "description": "Get this value from my.telegram.org.",
       "required": true
