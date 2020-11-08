@@ -465,39 +465,35 @@ async def imdb(e):
 
 @register(outgoing=True, pattern=r"^\.trt(?: |$)([\s\S]*)")
 async def translateme(trans):
-    """ For .trt command, translate the given text using Google Translate. """
-
-    if trans.is_reply and not trans.pattern_match.group(1):
-        message = await trans.get_reply_message()
-        message = str(message.message)
-    else:
-        message = str(trans.pattern_match.group(1))
-
-    if not message:
-        return await trans.edit("`Give a text or reply to a message to translate!`")
-
-    await trans.edit("`Processing...`")
     translator = Translator()
+    textx = await trans.get_reply_message()
+    message = trans.pattern_match.group(1)
+    if message:
+        pass
+    elif textx:
+        message = textx.text
+    else:
+        return await trans.edit("`Berikan teks atau balas pesan untuk diterjemahkan!`")
+
     try:
         reply_text = translator.translate(deEmojify(message), dest=TRT_LANG)
     except ValueError:
-        return await trans.edit("Invalid destination language.")
+        return await trans.edit("Bahasa tujuan tidak valid.")
 
     source_lan = LANGUAGES[f"{reply_text.src.lower()}"]
     transl_lan = LANGUAGES[f"{reply_text.dest.lower()}"]
-    reply_text = f"From **{source_lan.title()}**\nTo **{transl_lan.title()}:**\n\n{reply_text.text}"
+    reply_text = f"Dari **{source_lan.title()}**\nKe **{transl_lan.title()}:**\n\n{reply_text.text}"
 
     await trans.edit(reply_text)
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"Translated some {source_lan.title()} stuff to {transl_lan.title()} just now.",
+            f"Diterjemahkan beberapa {source_lan.title()} bahasa ke {transl_lan.title()} baru saja.",
         )
 
 
-@register(pattern=r"\.lang (trt|tts) (.*)", outgoing=True)
+@register(pattern=r"^\.lang (trt|tts) (.*)", outgoing=True)
 async def lang(value):
-    """ For .lang command, change the default langauge of userbot scrapers. """
     util = value.pattern_match.group(1).lower()
     if util == "trt":
         scraper = "Translator"
@@ -508,7 +504,7 @@ async def lang(value):
             LANG = LANGUAGES[arg]
         else:
             return await value.edit(
-                f"`Invalid Language code !!`\n`Available language codes for TRT`:\n\n`{LANGUAGES}`"
+                f"`Kode Bahasa tidak valid !!`\n`Kode bahasa yang tersedia untuk TRT`:\n\n`{LANGUAGES}`"
             )
     elif util == "tts":
         scraper = "Text to Speech"
@@ -519,12 +515,12 @@ async def lang(value):
             LANG = tts_langs()[arg]
         else:
             return await value.edit(
-                f"`Invalid Language code !!`\n`Available language codes for TTS`:\n\n`{tts_langs()}`"
+                f"`Kode Bahasa tidak valid !!`\n`Kode bahasa yang tersedia untuk TTS`:\n\n`{tts_langs()}`"
             )
-    await value.edit(f"`Language for {scraper} changed to {LANG.title()}.`")
+    await value.edit(f"`Bahasa untuk {scraper} diubah menjadi {LANG.title()}.`")
     if BOTLOG:
         await value.client.send_message(
-            BOTLOG_CHATID, f"`Language for {scraper} changed to {LANG.title()}.`"
+            BOTLOG_CHATID, f"`Bahasa untuk {scraper} diubah menjadi {LANG.title()}.`"
         )
 
 
