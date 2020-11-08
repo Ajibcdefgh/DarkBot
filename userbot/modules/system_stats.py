@@ -133,7 +133,6 @@ async def pipcheck(pip):
 
 @register(outgoing=True, pattern=r"^\.alive|.on$")
 async def amireallyalive(alive):
-    user = await .get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     output = (
         "`I'm alive at your services!`\n\n"
