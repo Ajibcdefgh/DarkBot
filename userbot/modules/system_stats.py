@@ -133,13 +133,13 @@ async def pipcheck(pip):
 
 @register(outgoing=True, pattern=r"^\.alive|.on$")
 async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """
-    await alive.edit(
-        "`"
-        "DarkBot sudah aktif dan berjalan!\n\n"
-        f"🤖Bot    : v0.9\n"
-        f"🐍Python : {python_version()}\n"
-        f"👤User   : {DEFAULTUSER}"
+    user = await bot.get_me()
+    uptime = await get_readable_time((time.time() - StartTime))
+    output = (
+        "`I'm alive at your services!`\n\n"
+        f"🤖 B o t       : v0.9\n"
+        f"🐍 P y t h o n : {python_version()}\n"
+        f"👤 U s e r     : {DEFAULTUSER}"
         "`"
     )
 
