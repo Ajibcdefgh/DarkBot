@@ -11,15 +11,9 @@ from os import remove
 from platform import python_version, uname
 from shutil import which
 
-from userbot import ALIVE_NAME, CMD_HELP, ALIVE_LOGO
+from telethon import version
 
-
-from userbot import (
-    CMD_HELP,
-    ALIVE_NAME,
-    ALIVE_LOGO,
-
-
+from userbot import ALIVE_NAME, CMD_HELP
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -139,14 +133,10 @@ async def pipcheck(pip):
 
 @register(outgoing=True, pattern=r"^\.alive|.on$")
 async def amireallyalive(alive):
-    # Prevent Channel Bug to run alive commad
-    if alive.is_channel and not alive.is_group:
-        await alive.edit("`alive Commad isn't permitted on channels`")
-        return
     """ For .alive command, check if the bot is running.  """
-    logo = LOGO
-    output = (
-        "`I'm alive at your services!`\n\n"
+    await alive.edit(
+        "`"
+        "I'm alive at your services!\n\n"
         f"🤖 B o t       : v0.9\n"
         f"🐍 P y t h o n : {python_version()}\n"
         f"👤 U s e r     : {DEFAULTUSER}"
