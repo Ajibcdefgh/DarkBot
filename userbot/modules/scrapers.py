@@ -539,9 +539,9 @@ async def yt_search(event):
         query = str(event.pattern_match.group(2))
 
     if not query:
-        return await event.edit("`Reply to a message or pass a query to search!`")
+        return await event.edit("`Balas pesan atau teruskan kueri untuk mencari!`")
 
-    await event.edit("`Processing...`")
+    await event.edit("`Mencari...`")
 
     if event.pattern_match.group(1) != "":
         counter = int(event.pattern_match.group(1))
@@ -559,7 +559,7 @@ async def yt_search(event):
             "`Youtube Search gone retard.\nCan't search this query!`"
         )
 
-    output = f"**Search Query:**\n`{query}`\n\n**Results:**\n"
+    output = f"**Kueri Pencarian:**\n`{query}`\n\n**Hasil:**\n"
 
     for i in results["videos"]:
         try:
@@ -586,10 +586,10 @@ async def download_video(v_url):
         url = str(v_url.pattern_match.group(2))
 
     if not url:
-        return await v_url.edit("`Reply to a message with a URL or pass a URL!`")
+        return await v_url.edit("`Balas pesan dengan URL atau berikan URL!`")
 
     type = v_url.pattern_match.group(1).lower()
-    await v_url.edit("`Preparing to download...`")
+    await v_url.edit("`Bersiap untuk mengunduh...`")
 
     if type == "a":
         opts = {
@@ -633,7 +633,7 @@ async def download_video(v_url):
         video = True
 
     try:
-        await v_url.edit("`Fetching data, please wait..`")
+        await v_url.edit("`Mengambil data, harap tunggu..`")
         with YoutubeDL(opts) as rip:
             rip_data = rip.extract_info(url)
     except DownloadError as DE:
@@ -659,7 +659,7 @@ async def download_video(v_url):
         return await v_url.edit(f"{str(type(e)): {str(e)}}")
     c_time = time.time()
     if song:
-        await v_url.edit(f"`Preparing to upload song:`\n**{rip_data['title']}**")
+        await v_url.edit(f"`Bersiap mengunggah lagu:`\n**{rip_data['title']}**")
         await v_url.client.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp3",
@@ -672,13 +672,13 @@ async def download_video(v_url):
                 )
             ],
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp3")
+                progress(d, t, v_url, c_time, "Mengupload..", f"{rip_data['title']}.mp3")
             ),
         )
         os.remove(f"{rip_data['id']}.mp3")
         await v_url.delete()
     elif video:
-        await v_url.edit(f"`Preparing to upload video:`\n**{rip_data['title']}**")
+        await v_url.edit(f"`Bersiap mengupload video:`\n**{rip_data['title']}**")
         await v_url.client.send_file(
             v_url.chat_id,
             f"{rip_data['id']}.mp4",
