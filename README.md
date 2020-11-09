@@ -5,8 +5,8 @@
 ```
 #include <std/disclaimer.h>
 /**
-    Your Telegram account may get Kensur-ed.
-    I'm not responsible for any Kensur-ous use of this bot.
+    Your Telegram account may get banned.
+    I'm not responsible for any risk use of this bot.
     This bot is intended for having fun as well as helping you
     efficiently manage groups and automate some boring stuff.
     Use this bot at your own risk, and use it sensibly.
