@@ -473,12 +473,12 @@ async def translateme(trans):
     elif textx:
         message = textx.text
     else:
-        return await trans.edit("`Berikan teks atau balas pesan untuk diterjemahkan!`")
+        return await trans.edit("`Give a text or reply to a message to translate!`")
 
     try:
         reply_text = translator.translate(deEmojify(message), dest=TRT_LANG)
     except ValueError:
-        return await trans.edit("Bahasa tujuan tidak valid.")
+        return await trans.edit("Invalid destination language.")
 
     source_lan = LANGUAGES[f"{reply_text.src.lower()}"]
     transl_lan = LANGUAGES[f"{reply_text.dest.lower()}"]
@@ -488,7 +488,7 @@ async def translateme(trans):
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"Diterjemahkan bahasa {source_lan.title()} ke bahasa {transl_lan.title()} baru saja.",
+            f"Translated some {source_lan.title()} stuff to {transl_lan.title()} just now.",
         )
 
 
