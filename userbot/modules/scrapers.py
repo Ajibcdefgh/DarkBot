@@ -488,7 +488,7 @@ async def translateme(trans):
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"Terjemahkan beberapa {source_lan.title()} bahasa ke {transl_lan.title()} baru saja.",
+            f"Terjemahkan bahasa {source_lan.title()} ke bahasa {transl_lan.title()} baru saja.",
         )
 
 
