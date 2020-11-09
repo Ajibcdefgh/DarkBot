@@ -482,13 +482,13 @@ async def translateme(trans):
 
     source_lan = LANGUAGES[f"{reply_text.src.lower()}"]
     transl_lan = LANGUAGES[f"{reply_text.dest.lower()}"]
-    reply_text = f"Dari **{source_lan.title()}**\nKe **{transl_lan.title()}:**\n\n{reply_text.text}"
+    reply_text = f"From **{source_lan.title()}**\nTo **{transl_lan.title()}:**\n\n{reply_text.text}"
 
     await trans.edit(reply_text)
     if BOTLOG:
         await trans.client.send_message(
             BOTLOG_CHATID,
-            f"Diterjemahkan beberapa {source_lan.title()} bahasa ke {transl_lan.title()} baru saja.",
+            f"Terjemahkan beberapa {source_lan.title()} bahasa ke {transl_lan.title()} baru saja.",
         )
 
 
